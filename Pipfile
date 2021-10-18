@@ -1,0 +1,23 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+django = "*"
+environs = {extras = ["django"], version = "*"}
+celery = "*"
+redis = "*"
+django-redis = "*"
+mailjet-rest = "*"
+django-storages = "*"
+boto3 = "*"
+psycopg2-binary = "*"
+django-crispy-forms = "*"
+
+[dev-packages]
+coverage = "*"
+flake8 = "*"
+
+[requires]
+python_version = "3.8"

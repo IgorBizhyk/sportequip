@@ -210,10 +210,9 @@ MAILJET_API_VERSION = env.str('MAILJET_API_VERSION', 'v3.1')
 MAILJET_ACCOUNT_EMAIL = env.str('MAILJET_ACCOUNT_EMAIL', '')
 
 # EMAIL WHITE LIST
-# TODO: release functionality of discard email list
-# DISCARD_EMAIL_WHITE_LIST = env.bool('DISCARD_EMAIL_WHITE_LIST', False)
-# DISCARD_PHONE_WHITE_LIST = env.bool('DISCARD_PHONE_WHITE_LIST', True)
-# EMAIL_WHITE_LIST = env.list('EMAIL_WHITE_LIST', ())
+DISCARD_EMAIL_WHITE_LIST = env.bool('DISCARD_EMAIL_WHITE_LIST', False)
+DISCARD_PHONE_WHITE_LIST = env.bool('DISCARD_PHONE_WHITE_LIST', True)
+EMAIL_WHITE_LIST = env.list('EMAIL_WHITE_LIST', ())
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/

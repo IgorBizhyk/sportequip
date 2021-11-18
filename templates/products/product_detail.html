@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="content-center m-5">
+        <div>
+            <img src="{{ product.image.url }}" width="470" height="370px" alt="">
+        </div>
+        <div>
+            <b>Назва: </b>
+            {{ product.name }}
+        </div>
+        <div>
+            <b>Опис: </b>
+            {{ product.description }}
+        </div>
+        <div>
+            <b>Країна-виробник: </b>
+            {{ product.country_producer }}
+        </div>
+        <div>
+            <b>Вага: </b>
+            {{ product.weight }} кг.
+        </div>
+        <div>
+            <b>Ціна: </b>
+            {{ product.price }} грн.
+        </div>
+
+        <form action="{% url 'products:add-to-basket' product.pk %}" method="post">
+            {% csrf_token %}
+            <input type="submit" value="Додати до кошика">
+        </form>
+
+    </div>
+{% endblock content %}

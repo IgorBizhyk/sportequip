@@ -14,6 +14,8 @@ django-storages = "*"
 boto3 = "*"
 psycopg2-binary = "*"
 django-crispy-forms = "*"
+pillow = "*"
+django-filter = "*"
 
 [dev-packages]
 coverage = "*"

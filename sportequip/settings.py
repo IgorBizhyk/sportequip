@@ -45,8 +45,12 @@ INSTALLED_APPS = [
 
     'storages',
     'crispy_forms',
+    'django_filters',
 
     'authentication',
+    'products',
+    'basket',
+    'reports',
 ]
 
 CRISPY_TEMPLATE_PACK = 'bootstrap3'
@@ -198,8 +202,8 @@ LOGIN_URL = 'auth:login'
 LOGIN_REDIRECT_URL = 'dashboard'
 # LOGOUT_REDIRECT_URL = 'registration:login'
 
-CELERY_BROKER_URL = env.str('BROKER_URL')
-CELERY_TASK_SOFT_TIME_LIMIT = env.int('TASK_SOFT_TIME_LIMIT_SEC', 60)
+# CELERY_BROKER_URL = env.str('BROKER_URL')
+# CELERY_TASK_SOFT_TIME_LIMIT = env.int('TASK_SOFT_TIME_LIMIT_SEC', 60)
 
 # EMAIL
 MAILJET_PUBLIC_KEY = env.str('MAILJET_PUBLIC_KEY', '')

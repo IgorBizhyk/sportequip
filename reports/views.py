@@ -1,14 +1,15 @@
 from datetime import datetime
 
-from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
 from django.http import HttpResponse
 from django.views import View
 
 from reports.utils import SalesReport
 
 
-class BaseCSVReportView(LoginRequiredMixin, View):
+class BaseCSVReportView(LoginRequiredMixin, PermissionRequiredMixin, View):
     """Base class for the downloading reports"""
+    permission_required = ''
     http_method_names = ('get',)
     report_class = None
     report_name = None

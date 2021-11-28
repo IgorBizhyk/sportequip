@@ -9,7 +9,7 @@ from reports.utils import SalesReport
 
 class BaseCSVReportView(LoginRequiredMixin, PermissionRequiredMixin, View):
     """Base class for the downloading reports"""
-    permission_required = ''
+    permission_required = 'staff'
     http_method_names = ('get',)
     report_class = None
     report_name = None

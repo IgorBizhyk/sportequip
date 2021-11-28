@@ -2,34 +2,45 @@
 
 {% block content %}
     <div class="content-center m-5">
-        <div>
-            <img src="{{ product.image.url }}" width="470" height="370px" alt="">
-        </div>
-        <div>
-            <b>Назва: </b>
-            {{ product.name }}
-        </div>
-        <div>
-            <b>Опис: </b>
-            {{ product.description }}
-        </div>
-        <div>
-            <b>Країна-виробник: </b>
-            {{ product.country_producer }}
-        </div>
-        <div>
-            <b>Вага: </b>
-            {{ product.weight }} кг.
-        </div>
-        <div>
-            <b>Ціна: </b>
-            {{ product.price }} грн.
-        </div>
+        <div style="display: flex;">
+            <div id="image">
+                <img src="{{ product.image.url }}" width="300" height="300px" alt="">
+            </div>
+            <div class="ml-5">
+                <div>
+                    <b>Name: </b>
+                    {{ product.name }}
+                </div>
 
-        <form action="{% url 'products:add-to-basket' product.pk %}" method="post">
-            {% csrf_token %}
-            <input type="submit" value="Додати до кошика">
-        </form>
+                <div>
+                    <b>Country-producer: </b>
+                    {{ product.country_producer }}
+                </div>
+                <div>
+                    <b>Weight: </b>
+                    {{ product.weight }} kg
+                </div>
+                <div>
+                    <b>Price: </b>
+                    {{ product.price }} USD
+                </div>
+                <div class="m-2">
+                    <form action="{% url 'products:add-to-basket' product.pk %}" method="post">
+                        {% csrf_token %}
+                        <input type="submit" value="Add to basket">
+                    </form>
+                </div>
+            </div>
+        </div>
+        {% if product.description %}
+            <div class="mt-3">
+                <b>Description: </b>
+                {{ product.description }}
+            </div>
+        {% endif %}
+
+
+
 
     </div>
 {% endblock content %}

@@ -14,6 +14,9 @@
 
     <link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
 
+    {% block links %}
+    {% endblock links %}
+
     {% if title %}
         <title>SportEquip - {{ title }}</title>
     {% else %}

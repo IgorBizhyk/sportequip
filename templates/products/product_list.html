@@ -2,7 +2,6 @@
 
 {% block content %}
     <div class="content-center">
-        <!-- Велосипеди -->
         <div class="main container-fluid padding">
             <div style="margin-bottom: 30px;">
                 <form method="get">
@@ -11,11 +10,11 @@
                     <input type="submit" />
                 </form>
             </div>
-            <div class="block1 col-12">
+            <div style="display: flex;flex-wrap: wrap;padding: 0" class="col-12">
                 {% for product in product_list %}
-                    <div style="margin-left: 40px;margin-right: 40px">
+                    <div style="" class="col-4">
                         <a href="{% url 'products:product-detail' product.id %}">
-                            <img src="{{ product.image.url }}" width="470" height="370px" alt="">
+                            <img src="{{ product.image.url }}" width="300" height="300px" alt="">
                             <hr>
                             <h4>
                                 {{ product.name }}
@@ -29,6 +28,5 @@
                 {% endfor %}
             </div>
         </div>
-        <!-- ./Велосипеди -->
     </div>
 {% endblock content %}

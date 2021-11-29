@@ -31,7 +31,7 @@ class AddToBasketView(LoginRequiredMixin, View):
         if not created:
             basket_item.quantity += 1
             basket_item.save()
-            messages.info(request, "Product updated.")
+            messages.info(request, f"Products in basket {basket_item.quantity}.")
         else:
             messages.info(request, "Product was added to the basket.")
             pass

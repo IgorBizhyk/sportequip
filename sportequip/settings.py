@@ -200,7 +200,7 @@ DEFAULT_DATE_FORMAT = '%d-%m-%Y'
 
 AUTH_USER_MODEL = 'authentication.User'
 LOGIN_URL = 'auth:login'
-LOGIN_REDIRECT_URL = 'dashboard'
+LOGIN_REDIRECT_URL = 'products:product-list'
 # LOGOUT_REDIRECT_URL = 'registration:login'
 
 # CELERY_BROKER_URL = env.str('BROKER_URL')

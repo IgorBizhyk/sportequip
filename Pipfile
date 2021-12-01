@@ -16,6 +16,7 @@ psycopg2-binary = "*"
 django-crispy-forms = "*"
 pillow = "*"
 django-filter = "*"
+mixer = "*"
 
 [dev-packages]
 coverage = "*"

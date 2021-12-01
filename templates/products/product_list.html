@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="content-center">
+        <div class="main container-fluid padding">
+            <div style="margin-bottom: 30px;">
+                <form method="get">
+                    <input type="text" name="search" id="id_search" placeholder="Search" value="{{ filterset.form.search.value|default:'' }}">
+                    {{ filterset.form.ordering }}
+                    <input type="submit" />
+                </form>
+            </div>
+            <div style="display: flex;flex-wrap: wrap;padding: 0" class="col-12">
+                {% for product in product_list %}
+                    <div style="" class="col-4">
+                        <a href="{% url 'products:product-detail' product.id %}">
+                            <img src="{{ product.image.url }}" width="300" height="300px" alt="">
+                            <hr>
+                            <h4>
+                                {{ product.name }}
+                            </h4>
+                        </a>
+                        <div>Producer: {{ product.country_producer.name }}</div>
+                        <div>Weight: {{ product.weight }} kg</div>
+                        <p>Price: {{ product.price }} USD</p>
+                        <hr>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+{% endblock content %}

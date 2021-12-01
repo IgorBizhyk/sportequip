@@ -14,10 +14,15 @@ django-storages = "*"
 boto3 = "*"
 psycopg2-binary = "*"
 django-crispy-forms = "*"
+pillow = "*"
+django-filter = "*"
+mixer = "*"
 
 [dev-packages]
 coverage = "*"
 flake8 = "*"
+django-extensions = "*"
+pydot = "*"
 
 [requires]
 python_version = "3.8"

@@ -45,8 +45,13 @@ INSTALLED_APPS = [
 
     'storages',
     'crispy_forms',
+    'django_filters',
+    'django_extensions',
 
     'authentication',
+    'products',
+    'basket',
+    'reports',
 ]
 
 CRISPY_TEMPLATE_PACK = 'bootstrap3'
@@ -195,11 +200,11 @@ DEFAULT_DATE_FORMAT = '%d-%m-%Y'
 
 AUTH_USER_MODEL = 'authentication.User'
 LOGIN_URL = 'auth:login'
-LOGIN_REDIRECT_URL = 'dashboard'
+LOGIN_REDIRECT_URL = 'products:product-list'
 # LOGOUT_REDIRECT_URL = 'registration:login'
 
-CELERY_BROKER_URL = env.str('BROKER_URL')
-CELERY_TASK_SOFT_TIME_LIMIT = env.int('TASK_SOFT_TIME_LIMIT_SEC', 60)
+# CELERY_BROKER_URL = env.str('BROKER_URL')
+# CELERY_TASK_SOFT_TIME_LIMIT = env.int('TASK_SOFT_TIME_LIMIT_SEC', 60)
 
 # EMAIL
 MAILJET_PUBLIC_KEY = env.str('MAILJET_PUBLIC_KEY', '')
@@ -210,10 +215,9 @@ MAILJET_API_VERSION = env.str('MAILJET_API_VERSION', 'v3.1')
 MAILJET_ACCOUNT_EMAIL = env.str('MAILJET_ACCOUNT_EMAIL', '')
 
 # EMAIL WHITE LIST
-# TODO: release functionality of discard email list
-# DISCARD_EMAIL_WHITE_LIST = env.bool('DISCARD_EMAIL_WHITE_LIST', False)
-# DISCARD_PHONE_WHITE_LIST = env.bool('DISCARD_PHONE_WHITE_LIST', True)
-# EMAIL_WHITE_LIST = env.list('EMAIL_WHITE_LIST', ())
+DISCARD_EMAIL_WHITE_LIST = env.bool('DISCARD_EMAIL_WHITE_LIST', False)
+DISCARD_PHONE_WHITE_LIST = env.bool('DISCARD_PHONE_WHITE_LIST', True)
+EMAIL_WHITE_LIST = env.list('EMAIL_WHITE_LIST', ())
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/

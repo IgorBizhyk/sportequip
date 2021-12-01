@@ -14,6 +14,9 @@
 
     <link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
 
+    {% block links %}
+    {% endblock links %}
+
     {% if title %}
         <title>SportEquip - {{ title }}</title>
     {% else %}
@@ -24,43 +27,49 @@
     <header class="site-header">
       <nav class="navbar navbar-expand-md navbar-dark bg-steel fixed-top">
         <div class="container">
-          <a class="navbar-brand mr-4" href="{% url 'dashboard' %}">SportEquip</a>
+          <a class="navbar-brand mr-4" href="{% url 'products:product-list' %}">SportEquip</a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle" aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
           </button>
           <div class="collapse navbar-collapse" id="navbarToggle">
             <div class="navbar-nav mr-auto">
-              <a class="nav-item nav-link" href="{% url 'auth:login' %}">Home</a>
-              <a class="nav-item nav-link" href="{% url 'auth:login' %}">About</a>
+              <a class="nav-item nav-link" href="{% url 'products:product-list' %}">Home</a>
+              <a class="nav-item nav-link" href="{% url 'basket:basket-list' %}">Basket</a>
+              {% if user.is_staff %}
+                  <a class="nav-item nav-link" href="{% url 'reports:sales-report' %}">Sales Report</a>
+                {% endif %}
             </div>
             <!-- Navbar Right Side -->
             <div class="navbar-nav">
               {% if user.is_authenticated %}
-                <a class="nav-item nav-link" href="{% url 'auth:login' %}">Profile</a>
+                <p class="nav-item nav-link">{{ user.email }}</p>
                 <a class="nav-item nav-link" href="{% url 'auth:logout' %}">Logout</a>
               {% else %}
                 <a class="nav-item nav-link" href="{% url 'auth:login' %}">Login</a>
-                <a class="nav-item nav-link" href="{% url 'auth:login' %}">Register</a>
+{#                <a class="nav-item nav-link" href="{% url 'auth:login' %}">Register</a>#}
               {% endif %}
             </div>
           </div>
         </div>
       </nav>
     </header>
-    <main role="main" class="container">
+    <div role="main" class="container">
       <div class="row">
-        <div class="col-md-8">
+        <div class="col-12">
           {% if messages %}
             {% for message in messages %}
-              <div class="alert alert-{{ message.tags }}">
+              <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
                 {{ message }}
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
               </div>
             {% endfor %}
           {% endif %}
           {% block content %}{% endblock %}
         </div>
       </div>
-    </main>
+    </div>
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->

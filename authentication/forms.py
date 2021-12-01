@@ -1,6 +1,7 @@
 from django.contrib.auth import authenticate
-from django.contrib.auth.forms import AuthenticationForm
+from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
 from django.core.exceptions import ValidationError
+from django.forms import EmailField
 
 from authentication.models import User
 
@@ -28,3 +29,9 @@ class CustomAuthenticationForm(AuthenticationForm):
                     )
 
         return self.cleaned_data
+
+
+class RegisterForm(UserCreationForm):
+    class Meta:
+        fields = ("email",)
+        field_classes = {'email': EmailField}

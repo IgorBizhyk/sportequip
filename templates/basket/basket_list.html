@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block links %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/basket.css' %}">
+{% endblock links %}
+
+
+{% block content %}
+    <div class="content-center">
+        <div class="main container-fluid padding">
+            <table>
+                <tr>
+                    <th>Product</th>
+                    <th>Quantity</th>
+                    <th>Price</th>
+                    <th>Summary</th>
+                    <th></th>
+                </tr>
+                {% for basket_item in basketitem_list %}
+                    <tr>
+                        <td>
+                            <a href="{% url 'products:product-detail' basket_item.product.pk %}">
+                                {{ basket_item.product.name }}
+                            </a>
+                        </td>
+                        <td>{{ basket_item.quantity }}</td>
+                        <td>{{ basket_item.product.price }} USD</td>
+                        <td>{{ basket_item.item_price }} USD</td>
+
+                        <td>
+                            <form action="{% url 'basket:remove-basket-item' basket_item.pk %}" method="post">
+                                {% csrf_token %}
+                                <input type="submit" value="Remove">
+                            </form>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </table>
+
+            <div class="mt-5">
+                <p>Total price: {{ basket.total_price }} USD</p>
+                <form action="{% url 'basket:order' %}" method="post">
+                    {% csrf_token %}
+                    <input type="submit" value="Order">
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock content %}

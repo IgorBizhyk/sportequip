@@ -20,6 +20,8 @@ django-filter = "*"
 [dev-packages]
 coverage = "*"
 flake8 = "*"
+django-extensions = "*"
+pydot = "*"
 
 [requires]
 python_version = "3.8"
